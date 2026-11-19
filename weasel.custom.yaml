@@ -1,0 +1,100 @@
+﻿# rime 五笔自定义界面
+# 编码: utf-8
+# 本文件是 weasel.yaml（候选窗外观）的补丁：改完保存后必须「重新部署」才生效
+# 只写需要改的项即可，没写的项沿用 weasel.yaml 的默认值
+
+patch:
+  style:
+    antialias_mode:
+    ascii_tip_follow_cursor:
+    candidate_abbreviate_length:
+    click_to_capture:
+    color_scheme: Skin-1
+    color_scheme_dark: Skin-1
+    color_theme_dark:
+    comment_font_face: 黑体字根
+    comment_font_point: 15
+    display_tray_icon: false
+    enable_mouse:
+    enhanced_position:
+    font_face: 微软雅黑
+    font_point: 15
+    fullscreen: false
+
+    # ── 候选窗方向 ────────────────────────────────────────────────────
+    # horizontal：候选项怎么摆放
+    #   true  → 横排
+    #   false → 竖排
+    horizontal: false
+
+    # vertical_text：候选项内部的文字怎么摆放 —— 「像古文一样竖排」就是这一项
+    #   false → 字横向连排，如「热爱」
+    #   true  → 字逐个向下堆叠成一列，如古籍竖排（标签在上，字根注释接着往下排）
+    # 想要古文效果：把下面的 False 改成 True，保存后重新部署即可。
+    vertical_text: false
+    # 竖排时各列的走向：false 从右往左（古书习惯）；true 从左往右
+    vertical_text_left_to_right: true
+    # 竖排时单列过长是否自动换到旁边一列；需配合 layout/max_height 才起作用
+    vertical_text_with_wrap: false
+
+    inline_preedit: True
+    label_font_face: 微软雅黑
+    label_font_point: 15
+    # 标签格式：%s 会被替换成 1、2、3……；竖排时标签显示在每一列的顶端
+    # 嫌「1.」的点号碍眼，可改成 '%s'，或写成 '' 完全不显示标签
+    label_format: '%s.'
+    layout:
+      align_type: center
+      border_width: 2
+      candidate_spacing: 10
+      corner_radius: 10
+      hilite_padding: 6
+      hilite_spacing: 4
+      hilite_padding_x: 6
+      hilite_padding_y: 6
+      margin_x: 0
+      margin_y: 0
+      # 候选框最大高度：0 表示不限制。竖排时设成 300 之类的值，
+      # 再打开上面的 vertical_text_with_wrap，过长的候选项就会折到相邻一列
+      max_height: 0
+      max_width: 0
+      min_height: 0
+      min_width: 0
+      round_corner: 10
+      shadow_offset_x: 2
+      shadow_offset_y: 2
+      shadow_radius: 0
+      spacing: 10
+    mark_text: ''
+    mouse_hover_ms:
+    paging_on_scroll:
+    preedit_type: composition
+    # 竖排时，候选窗翻到光标上方，是否把候选项倒序排列（避免顺手选到相邻的项）
+    vertical_auto_reverse: false
+  preset_color_schemes:
+    Skin-1:
+      author: 中书君
+      back_color: 0xFF000000
+      border_color: 0x00FFFFFF
+      candidate_back_color: 0xFF000000
+      candidate_border_color: 
+      candidate_shadow_color: 
+      candidate_text_color: 0xFFFFFFFF
+      color_format: abgr
+      comment_text_color: 0xFFFFFFFF
+      hilited_back_color: 0xFF000000
+      hilited_candidate_back_color: 0xFFFFFFFF
+      hilited_candidate_border_color: 0x00FFFFFF
+      hilited_candidate_shadow_color: 
+      hilited_candidate_text_color: 0xFF000000
+      hilited_comment_text_color: 0xFF000000
+      hilited_label_color: 0xFF000000
+      hilited_mark_color: 
+      hilited_shadow_color: 
+      hilited_text_color: 0xFFFFFFFF
+      label_color: 0xFFFFFFFF
+      name: 默认一
+      nextpage_color: 
+      prevpage_color: 
+      shadow_color: 0xFFFFFFFF
+      text_color: 0xFF000000

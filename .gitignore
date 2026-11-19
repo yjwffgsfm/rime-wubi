@@ -34,4 +34,3 @@ user.yaml
 settings.json
 *.userdb/
 *.txt
-/*.custom.yaml

@@ -1,0 +1,56 @@
+# rime 五笔自定义配置
+# 编码: utf-8
+# 本文件是 wubi.schema.yaml（纯五笔）的补丁：改完保存后必须「重新部署」才生效
+# 写法说明：带斜杠的键（如 speller/auto_select）是逐层缩进的简写，
+#   speller/auto_select: true 等价于 speller: { auto_select: true }。
+
+patch:
+  # ── 按键绑定 ──────────────────────────────────────────────────────
+  # bindings/+ 表示「在方案原有的 bindings 后面追加」，不会覆盖已有绑定。
+  # 下面这几条方案里本来就有，只是在 wubi.schema.yaml 中被注释掉了，这里重新启用。
+  key_binder/bindings/+:
+    # 回车 = 取消当前输入（编码区、候选区都生效）
+    # - {accept: Return, send: Escape, when: composing}
+    # - {accept: Return, send: Escape, when: has_menu}
+    # 分号选第 2 个候选、单引号选第 3 个候选（send 后的数字就是候选序号）
+    - {accept: semicolon, send: 2, when: has_menu}
+    - {accept: apostrophe, send: 3, when: has_menu}
+
+  # ── 输入方式（speller）────────────────────────────────────────────
+  # 满码后继续按键就清空重来（值也可写成 true / false）
+  speller/auto_clear: max_length
+  # 四码唯一自动上屏：方案默认是 false，这里打开，四码无重码时不必再按空格
+  speller/auto_select: true
+  # 最长编码 4 码：方案里默认 10000（不限长、可连打），这里改为四码定长（顶功式打法）
+  speller/max_code_length: 4
+
+  # ── 方案开关的默认状态（switches）────────────────────────────────
+  # switches/+ 只追加同名开关的 reset（0 = 关，1 = 开），用来指定「每次部署后的初值」；
+  # 开关的名字和显示文字（states，如 简/繁）仍由 wubi.schema.yaml 定义，所以这里不写 states。
+  switches/+:
+    - {name: show_es, reset: 0}           # 表情替换（emoji 候选）：关
+    - {name: zh_trad, reset: 0}           # 繁体输出：关，即输出简体
+    - {name: new_spelling, reset: 0}      # 字根拆分提示：隐，不显示
+    - {name: new_hide_pinyin, reset: 1}   # 提示里的拼音：哑，不显示拼音
+    - {name: GB2312, reset: 1}            # 字集过滤：常，只出 GB2312 常用字（关=连扩展字一起出）
+    - {name: single_char, reset: 0}       # 单字模式：关，字词混合出字
+    - {name: full_shape, reset: 0}        # 全角：关，用半角
+
+  # ── 翻译器（translator）──────────────────────────────────────────
+  # 编码补全：关，不拿半个编码提前列出完整编码的候选
+  translator/enable_completion: false
+  # 编码器：关，不为新词自动生成编码
+  translator/enable_encoder: false
+  # 整句连打：关，五笔按码表出字，不做句子联想
+  translator/enable_sentence: false
+  # 用户词典：关，不记忆新词、不自动调频
+  # （想开自动调频、自动造词，把 enable_user_dict 和 enable_encoder 一起改成 true）
+  translator/enable_user_dict: false
+  # 编码历史：关，不把已上屏的词语记进编码历史
+  translator/encode_commit_history: false
+
+  # ── 候选栏（menu）────────────────────────────────────────────────
+  # 候选序号用圈码 ❶~❿ 显示；也可改成普通数字 1~0
+  menu/alternative_select_labels: [ ❶, ❷, ❸, ❹, ❺, ❻, ❼, ❽, ❾, ❿ ]
+  # 每页显示几个候选
+  menu/page_size: 5
