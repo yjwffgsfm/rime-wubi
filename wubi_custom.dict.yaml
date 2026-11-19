@@ -1,0 +1,40 @@
+# Rime  自定义词库
+# 编码: utf-8
+# 本文件由 wubi.extended.dict.yaml 的 import_tables 引用，注意 import_tables 引用的名字要与本文 name 保持一致（wubi_custom） 
+
+---
+name: wubi_custom
+version: "1.0"
+sort: by_weight
+columns:
+  - text
+  - code
+  - weight
+encoder:
+  exclude_patterns:
+    - '^z.*$'
+  rules:
+    - length_equal: 2
+      formula: "AaAbBaBb"
+    - length_equal: 3
+      formula: "AaBaCaCb"
+    - length_in_range: [4, 90]
+      formula: "AaBaCaZa"
+...
+
+# ──────── 加词说明（列之间必须是 TAB，不能用空格）──────── 
+#
+# 一、无码加词（最省事）：只写词，编码由上面 encoder 规则自动生成
+#     二字词 AaAbBaBb、三字词 AaBaCaCb、四字以上 AaBaCaZa
+#
+# 二、指定编码：词<TAB>编码
+#
+# 三、调词频/排序：词<TAB><TAB>权重（跳过 code 列，要两个 TAB）
+#
+# 注意：词条末尾不要带标点；改完必须「重新部署」才生效。
+
+# 例：
+# 树莓派
+# docker compose up -d	qwer
+# docker compose down	rewq
+# 打歪	dwls	50

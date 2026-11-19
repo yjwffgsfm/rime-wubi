@@ -10,6 +10,7 @@ sort: by_weight
 import_tables:
   - wubi
   - quick_symbols
+  - wubi_custom
 columns:
   - text
   - code
@@ -80,7 +81,3 @@ encoder:
 # 「主码表」与「扩展词库」最终在「Librime」引擎中「合二为一」。
 # 「扩展词库」可视为「主码表」的延伸与补充，两者权级平等，故遇着想改排序的重码，变更词频时，需要与主表对照。
 # 数据无价，注意保存备份，可以定期保存，程序升级前，可以先取出，再覆盖回去。
-
-# 自定义词语
-空山明月
-中书君
