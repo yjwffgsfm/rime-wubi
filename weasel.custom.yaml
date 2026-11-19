@@ -84,17 +84,17 @@ patch:
       comment_text_color: 0xFFFFFFFF
       hilited_back_color: 0xFF000000
       hilited_candidate_back_color: 0xFFFFFFFF
-      hilited_candidate_border_color: 0x00FFFFFF
+      hilited_candidate_border_color: 
       hilited_candidate_shadow_color: 
       hilited_candidate_text_color: 0xFF000000
       hilited_comment_text_color: 0xFF000000
       hilited_label_color: 0xFF000000
       hilited_mark_color: 
       hilited_shadow_color: 
-      hilited_text_color: 0xFFFFFFFF
+      hilited_text_color: 0xFF8F3F00
       label_color: 0xFFFFFFFF
       name: 默认一
       nextpage_color: 
       prevpage_color: 
-      shadow_color: 0xFFFFFFFF
-      text_color: 0xFF000000
+      shadow_color: 0xFFFFDEDE
+      text_color: 0xFFFFFFFF
